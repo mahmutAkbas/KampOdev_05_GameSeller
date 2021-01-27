@@ -12,7 +12,8 @@ namespace KampOdev_05_GameSeller
             OyunYonetimi oyunYonetimi = new OyunYonetimi();
             oyunYonetimi.Kaydet(oyun) ;
             OyuncuYonetimi oyuncuYonetimi = new OyuncuYonetimi(new OyuncuKontrol());
-            oyuncuYonetimi.Kaydet(new Oyuncu { Id = 1, Adi = "ökkeş", Soyadi = "yavuz", DogumTarihi = new DateTime(1995, 05, 06), Tc = "12365478966" });
+            Oyuncu oyuncu = new Oyuncu { Id = 1, Adi = "ökkeş", Soyadi = "yavuz", DogumTarihi = new DateTime(1995, 05, 06), Tc = "12365478966" };
+            oyuncuYonetimi.Kaydet(oyuncu);
             Kampanya kampanya = new Kampanya { Id = 2, Adi = "Mübarek Cumartesi Kampanyası", GecerlilikSuresi = new DateTime(2021, 02, 27), IndirimYuzdesi = 5 };
             KapmanyaYonetimi kapmanyaYonetimi = new KapmanyaYonetimi();
             kapmanyaYonetimi.Kaydet(kampanya);
@@ -20,7 +21,9 @@ namespace KampOdev_05_GameSeller
             KampanyaOyunYonetimi kampanyaOyunYonetimi = new KampanyaOyunYonetimi();
             kampanyaOyunYonetimi.Ekle(oyunKampanya);
             kampanyaOyunYonetimi.GetIndirimliFiyat(oyunKampanya);
-            
+            SatisYonetimi satis = new SatisYonetimi();
+            satis.Ekle(new Satis { _Oyuncu = oyuncu, _OyunKampanya = oyunKampanya });
+
               
         }
     }
